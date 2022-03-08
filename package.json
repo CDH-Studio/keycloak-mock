@@ -17,12 +17,12 @@
     "prepack": "yarn format && yarn build"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.4.0",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/node-jose": "^1.1.8",
     "@types/qs": "^6.9.7",
     "@types/uuid": "^8.3.1",
-    "axios": "^0.21.1",
+    "axios": "^0.26.0",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "qs": "^6.10.1",
