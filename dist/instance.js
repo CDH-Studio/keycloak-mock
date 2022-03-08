@@ -22,7 +22,7 @@ class MockInstance {
         if (!user) {
             throw new Error("Cannot create bearer token for non-existent user");
         }
-        return createBearerToken_1.default({
+        return (0, createBearerToken_1.default)({
             user,
             key: this.defaultKey,
             expiresIn,

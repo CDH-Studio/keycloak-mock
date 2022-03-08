@@ -44,7 +44,7 @@ const createToken = (instance, request, body) => {
             refresh_token: refreshToken,
             token_type: "bearer",
             "not-before-policy": 0,
-            session_state: uuid_1.v4(),
+            session_state: (0, uuid_1.v4)(),
             scope: scope || "email profile",
         },
     ];

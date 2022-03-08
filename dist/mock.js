@@ -25,48 +25,48 @@ const activateMock = (instance, options) => {
     if (existingMock) {
         throw new Error(`There is an existing mock active for ${authServerURL}`);
     }
-    const scope = nock_1.default(authServerURL)
+    const scope = (0, nock_1.default)(authServerURL)
         .persist()
         .get(`/realms/${realm}/protocol/openid-connect/certs`)
         .reply(async function () {
-        await middlewares_1.decodeTokenAndAttachUser(instance, this.req);
+        await (0, middlewares_1.decodeTokenAndAttachUser)(instance, this.req);
         if (options && options.listCertificatesView) {
             return options.listCertificatesView(instance, this.req);
         }
-        return views_1.listCertificates(instance, this.req);
+        return (0, views_1.listCertificates)(instance, this.req);
     })
         .get(new RegExp(`/admin/realms/${realm}/users/(.+)`))
         .reply(async function () {
-        await middlewares_1.decodeTokenAndAttachUser(instance, this.req);
+        await (0, middlewares_1.decodeTokenAndAttachUser)(instance, this.req);
         if (options && options.getUserView) {
             return options.getUserView(instance, this.req);
         }
-        return views_1.getUser(instance, this.req);
+        return (0, views_1.getUser)(instance, this.req);
     })
         .delete(new RegExp(`/admin/realms/${realm}/users/(.+)`))
         .reply(async function () {
-        await middlewares_1.decodeTokenAndAttachUser(instance, this.req);
+        await (0, middlewares_1.decodeTokenAndAttachUser)(instance, this.req);
         if (options && options.deleteUserView) {
             return options.deleteUserView(instance, this.req);
         }
-        return views_1.deleteUser(instance, this.req);
+        return (0, views_1.deleteUser)(instance, this.req);
     })
         .get(`/realms/${realm}/protocol/openid-connect/userinfo`)
         .reply(async function () {
-        await middlewares_1.decodeTokenAndAttachUser(instance, this.req);
+        await (0, middlewares_1.decodeTokenAndAttachUser)(instance, this.req);
         if (options && options.getUserInfoView) {
             return options.getUserInfoView(instance, this.req);
         }
-        return views_1.getUserInfo(instance, this.req);
+        return (0, views_1.getUserInfo)(instance, this.req);
     })
         .get(`/admin/realms/${realm}/users`)
         .query(() => true)
         .reply(async function () {
-        await middlewares_1.decodeTokenAndAttachUser(instance, this.req);
+        await (0, middlewares_1.decodeTokenAndAttachUser)(instance, this.req);
         if (options && options.listUsersView) {
             return options.listUsersView(instance, this.req);
         }
-        return views_1.listUsers(instance, this.req);
+        return (0, views_1.listUsers)(instance, this.req);
     })
         .post(`/realms/${realm}/protocol/openid-connect/token`)
         .reply(async function (uri, body) {
@@ -74,16 +74,16 @@ const activateMock = (instance, options) => {
         if (options && options.createTokenView) {
             return options.createTokenView(instance, this.req, decodedBody);
         }
-        return views_1.createToken(instance, this.req, decodedBody);
+        return (0, views_1.createToken)(instance, this.req, decodedBody);
     })
         .post(`/admin/realms/${realm}/users`)
         .reply(async function (uri, body) {
         const decodedBody = decodeBody(this.req, body);
-        await middlewares_1.decodeTokenAndAttachUser(instance, this.req);
+        await (0, middlewares_1.decodeTokenAndAttachUser)(instance, this.req);
         if (options && options.createUserView) {
             return options.createUserView(instance, this.req, decodedBody);
         }
-        return views_1.createUser(instance, this.req, decodedBody);
+        return (0, views_1.createUser)(instance, this.req, decodedBody);
     });
     const mock = { scope, instance };
     __activeMocks__.set(authServerURL, mock);

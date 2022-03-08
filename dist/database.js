@@ -108,7 +108,7 @@ class MockDatabase {
      */
     createUser(options) {
         const finalizedOptions = options || {};
-        const id = finalizedOptions.id || uuid_1.v4();
+        const id = finalizedOptions.id || (0, uuid_1.v4)();
         const email = finalizedOptions.email || "henk.jansen@gmail.com";
         const username = finalizedOptions.username || email;
         if (this.findUserByID(id)) {
@@ -124,11 +124,11 @@ class MockDatabase {
             id,
             createdTimestamp: finalizedOptions.createdTimestamp || new Date().getTime(),
             username,
-            enabled: isNil_1.default(finalizedOptions.enabled)
+            enabled: (0, isNil_1.default)(finalizedOptions.enabled)
                 ? true
                 : finalizedOptions.enabled,
-            totp: isNil_1.default(finalizedOptions.totp) ? true : finalizedOptions.totp,
-            emailVerified: isNil_1.default(finalizedOptions.emailVerified)
+            totp: (0, isNil_1.default)(finalizedOptions.totp) ? true : finalizedOptions.totp,
+            emailVerified: (0, isNil_1.default)(finalizedOptions.emailVerified)
                 ? true
                 : finalizedOptions.emailVerified,
             firstName: finalizedOptions.firstName || "Henk",

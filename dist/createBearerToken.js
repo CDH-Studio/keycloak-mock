@@ -12,7 +12,7 @@ const createBearerToken = (options) => {
             typ: "JWT",
             kid: options.key.kid,
         } }, (options.audience && { audience: options.audience }));
-    return jsonwebtoken_1.default.sign(Object.assign({ iss: `${options.authServerURL}/realms/${options.realm}`, iat: expiresAt, exp: expiresAt, nbf: 0, typ: "Bearer", sub: options.user.profile.id, azp: options.clientID, session_state: uuid_1.v4() }, (options.roles && {
+    return jsonwebtoken_1.default.sign(Object.assign({ iss: `${options.authServerURL}/realms/${options.realm}`, iat: expiresAt, exp: expiresAt, nbf: 0, typ: "Bearer", sub: options.user.profile.id, azp: options.clientID, session_state: (0, uuid_1.v4)() }, (options.roles && {
         resource_access: { [options.clientID]: { roles: options.roles } },
     })), options.key.toPEM(true), sign_options);
 };
