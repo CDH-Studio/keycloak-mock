@@ -22,7 +22,7 @@
     "@types/node-jose": "^1.1.8",
     "@types/qs": "^6.9.7",
     "@types/uuid": "^8.3.1",
-    "axios": "^0.26.0",
+    "axios": "^1.2.5",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "qs": "^6.10.1",
